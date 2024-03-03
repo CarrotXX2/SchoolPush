@@ -1,27 +1,29 @@
 using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class ShowUI : MonoBehaviour
 {
     public Camera mainCamera;
     public Button button;
     public float raycastDistance = 3f;
+    public Dialogue dialogue;
+    public Dialogue dialogue2;
 
     void Start()
     {
-        button.gameObject.SetActive(false); 
+        button.gameObject.SetActive(false);
     }
 
     void ShowButton()
     {
-        button.gameObject.SetActive(true); 
+        button.gameObject.SetActive(true);
     }
 
     void HideButton()
     {
-        button.gameObject.SetActive(false); 
+        button.gameObject.SetActive(false);
     }
 
     void Update()
@@ -31,22 +33,40 @@ public class ShowUI : MonoBehaviour
 
         if (Physics.Raycast(ray, out hit, raycastDistance))
         {
-            if (hit.collider.CompareTag("Interactable"))
+            if (hit.collider.CompareTag("Radio1"))
             {
                 ShowButton();
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    HideButton();
+                    // Controleer of het dialoogscript is toegewezen
+                    if (dialogue != null)
+                    {
+                        // Start het dialoogscript
+                        dialogue.StartDialogue();
+                    }
+                }
+            }
+            else if (hit.collider.CompareTag("Radio2"))
+            {
+                ShowButton();
+                if (Input.GetKeyDown(KeyCode.E))
+                {
+                    // Controleer of het dialoogscript is toegewezen
+                    if (dialogue2 != null)
+                    {
+                        // Start het dialoogscript
+                        dialogue2.StartDialogue();
+                    }
                 }
             }
             else
             {
-                HideButton();
+                HideButton(); // Verberg de knop als geen van de radio-objecten wordt geraakt
             }
         }
         else
         {
-            HideButton();
+            HideButton(); // Verberg de knop als er geen objecten worden geraakt door de raycast
         }
     }
 }

@@ -6,6 +6,8 @@ TagManager:
   tags:
   - Radio1
   - Interactable
+  - Radio2
+  - Background music
   layers:
   - Default
   - TransparentFX
