@@ -44,10 +44,5 @@ public class HendelDeur : MonoBehaviour
                 interactButton.gameObject.SetActive(true);
             }
         }
-        else
-        {
-            // De raycast heeft geen object geraakt, deactiveer de interactieknop
-            interactButton.gameObject.SetActive(false);
-        }
     }
 }

@@ -14,7 +14,6 @@ public class Dialogue : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        // Verberg het dialoogobject
         gameObject.SetActive(false);
     }
 
@@ -35,7 +34,7 @@ public class Dialogue : MonoBehaviour
         }
     }
 
-    public void StartDialogue() // Verander deze methode naar public
+    public void StartDialogue()
     {
         gameObject.SetActive(true);
         index = 0;
@@ -61,7 +60,7 @@ public class Dialogue : MonoBehaviour
         }
         else
         {
-            gameObject.SetActive(false); // Puntkomma toegevoegd
+            gameObject.SetActive(false);
         }
     }
 }

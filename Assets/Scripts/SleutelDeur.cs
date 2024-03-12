@@ -3,22 +3,13 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Sleuteldeur : MonoBehaviour
+public class SleutelDeur : MonoBehaviour
 {
-    public GameObject Hendel;
-    public GameObject Deur;
+    public GameObject Sleutel;
+    public GameObject GeslotenDeur;
     public Camera mainCamera;
-    public Button Metsleutel; // Knop voor interactie met sleutel
-    public Button ZonderSleutel; // Alternatieve knop voor interactie zonder sleutel
-
+    public Button interactButton; 
     private bool haveKey = false;
-
-    void Start()
-    {
-        // Deactiveer de knoppen bij het starten van het spel
-        Metsleutel.gameObject.SetActive(false);
-        ZonderSleutel.gameObject.SetActive(false);
-    }
 
     void Update()
     {
@@ -32,43 +23,39 @@ public class Sleuteldeur : MonoBehaviour
             // Controleren of de raycast een object raakt
             if (Physics.Raycast(ray, out hit))
             {
-                // Controleren of het geraakte object hetzelfde is als het huidige object
-                if (hit.collider.CompareTag("Sleutel"))
+                // Controleren of het geraakte object hetzelfde is als de sleutel
+                if (hit.collider.gameObject == Sleutel)
                 {
-                    // Als het object de tag "Sleutel" heeft, set haveKey op true en vernietig de sleutel
+                    // Speler heeft de sleutel, set haveKey op true en vernietig de sleutel
                     haveKey = true;
-                    Destroy(hit.collider.gameObject);
+                    Destroy(Sleutel);
                 }
-                else if (hit.collider.gameObject == Hendel && haveKey)
+                else if (hit.collider.gameObject == GeslotenDeur && haveKey)
                 {
-                    // Verwijder de deur als het geraakte object hetzelfde is als de hendel en haveKey true is
-                    if (Deur != null) // Controleer of Deur niet null is om fouten te voorkomen
+                    // Verwijder de deur als het geraakte object hetzelfde is als de deur en de speler de sleutel heeft
+                    if (GeslotenDeur != null)
                     {
-                        Destroy(Deur);
+                        Destroy(GeslotenDeur);
                     }
                 }
             }
         }
 
-        // Controleren of de speler naar de hendel kijkt
-        if (Physics.Raycast(ray, out hit))
+        // Controleren of de raycast een object raakt
+        if (Physics.Raycast(ray, out hit, 1f))
         {
-            // Als de speler naar de hendel kijkt, activeer de juiste knop
-            if (hit.collider.gameObject == Hendel || hit.collider.gameObject == Deur)
+            // Controleren of het geraakte object hetzelfde is als de deur
+            if (hit.collider.gameObject == GeslotenDeur)
             {
-                if (haveKey)
-                {
-                    // Als de speler de sleutel heeft, activeer de Metsleutel knop
-                    Metsleutel.gameObject.SetActive(true);
-                }
-                else
-                {
-                    // Als de speler de sleutel niet heeft, activeer de ZonderSleutel knop
-                    Metsleutel.gameObject.SetActive(false);
-                    ZonderSleutel.gameObject.SetActive(true);
-                }
+                // De speler heeft de sleutel en kijkt naar de deur, activeer de interactieknop
+                interactButton.gameObject.SetActive(true);
             }
-
+            else
+            {
+                // De speler kijkt niet naar de deur of heeft de sleutel niet, deactiveer de interactieknop
+                interactButton.gameObject.SetActive(false);
+            }
         }
+
     }
 }

@@ -38,10 +38,8 @@ public class ShowUI : MonoBehaviour
                 ShowButton();
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    // Controleer of het dialoogscript is toegewezen
                     if (dialogue != null)
                     {
-                        // Start het dialoogscript
                         dialogue.StartDialogue();
                     }
                 }
@@ -51,22 +49,20 @@ public class ShowUI : MonoBehaviour
                 ShowButton();
                 if (Input.GetKeyDown(KeyCode.E))
                 {
-                    // Controleer of het dialoogscript is toegewezen
                     if (dialogue2 != null)
                     {
-                        // Start het dialoogscript
                         dialogue2.StartDialogue();
                     }
                 }
             }
             else
             {
-                HideButton(); // Verberg de knop als geen van de radio-objecten wordt geraakt
+                HideButton(); 
             }
         }
         else
         {
-            HideButton(); // Verberg de knop als er geen objecten worden geraakt door de raycast
+            HideButton(); 
         }
     }
 }
