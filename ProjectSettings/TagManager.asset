@@ -8,6 +8,8 @@ TagManager:
   - Interactable
   - Radio2
   - Background music
+  - doorTag
+  - Sleutel
   layers:
   - Default
   - TransparentFX
