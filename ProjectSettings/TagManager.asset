@@ -14,6 +14,7 @@ TagManager:
   - LoopPlank
   - PlankSpawner
   - dood
+  - Radio3
   layers:
   - Default
   - TransparentFX

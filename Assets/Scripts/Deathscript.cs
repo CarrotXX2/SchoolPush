@@ -11,7 +11,7 @@ public class DeathScript : MonoBehaviour
     {
         if (collision.gameObject.CompareTag("dood")) // Controleer of de speler botst met een vijand
         {
-            SceneManager.LoadScene(0);
+            SceneManager.LoadScene(2);
         }
     }
 }

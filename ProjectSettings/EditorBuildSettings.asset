@@ -11,4 +11,7 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/Startscreen.unity
     guid: 524a6b0da9b185e42a16d09187017ecd
+  - enabled: 1
+    path: Assets/Scenes/Deathscreen.unity
+    guid: f1053b7b6810eaf4fbbde41872bcc96e
   m_configObjects: {}
