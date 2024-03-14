@@ -7,7 +7,7 @@ public class ShowUI : MonoBehaviour
 {
     public Camera mainCamera;
     public Button button;
-    public float raycastDistance = 3f;
+    public float raycastDistance = 1f;
     public Dialogue dialogue;
     public Dialogue dialogue2;
 

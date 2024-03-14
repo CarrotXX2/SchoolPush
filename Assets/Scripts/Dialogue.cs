@@ -10,6 +10,8 @@ public class Dialogue : MonoBehaviour
     public float textspeed;
 
     private int index;
+    private bool isTyping; // A flag to indicate whether the text is currently being typed
+    private bool dialogueActive; // A flag to indicate whether the dialogue is active
 
     // Start is called before the first frame update
     void Start()
@@ -22,20 +24,26 @@ public class Dialogue : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (textcomponent.text == lines[index])
+            if (textcomponent.text == lines[index] && !isTyping) // Check if not currently typing
             {
                 Nextline();
             }
-            else
+            else if (!isTyping) // Check if not currently typing
             {
                 StopAllCoroutines();
                 textcomponent.text = lines[index];
             }
         }
+
+        if (Input.GetKeyDown(KeyCode.E) && !dialogueActive) // Check if dialogue is not already active
+        {
+            StartDialogue();
+        }
     }
 
     public void StartDialogue()
     {
+        dialogueActive = true; // Set dialogue as active
         gameObject.SetActive(true);
         index = 0;
         StartCoroutine(TypeLine());
@@ -43,11 +51,13 @@ public class Dialogue : MonoBehaviour
 
     IEnumerator TypeLine()
     {
+        isTyping = true; // Set typing flag
         foreach (char c in lines[index].ToCharArray())
         {
             textcomponent.text += c;
             yield return new WaitForSeconds(textspeed);
         }
+        isTyping = false; // Reset typing flag
     }
 
     void Nextline()
@@ -60,6 +70,7 @@ public class Dialogue : MonoBehaviour
         }
         else
         {
+            dialogueActive = false; // Reset dialogue as not active
             gameObject.SetActive(false);
         }
     }

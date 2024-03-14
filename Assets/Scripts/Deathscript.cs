@@ -5,16 +5,13 @@ using UnityEngine.SceneManagement;
 
 public class DeathScript : MonoBehaviour
 {
-    // De naam van de scene waarnaar de speler moet worden doorgestuurd bij de dood
-    public string sceneToLoad;
+    public Scene Startscreen;
 
     void OnCollisionEnter(Collision collision)
     {
-        // Controleren of de speler wordt geraakt door iets met de tag "dood"
-        if (collision.gameObject.CompareTag("dood"))
+        if (collision.gameObject.CompareTag("dood")) // Controleer of de speler botst met een vijand
         {
-            // Laad de opgegeven scene
-            SceneManager.LoadScene(sceneToLoad);
+            SceneManager.LoadScene(0);
         }
     }
 }

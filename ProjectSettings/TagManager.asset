@@ -10,6 +10,10 @@ TagManager:
   - Background music
   - doorTag
   - Sleutel
+  - Plank
+  - LoopPlank
+  - PlankSpawner
+  - dood
   layers:
   - Default
   - TransparentFX
