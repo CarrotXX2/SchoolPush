@@ -9,6 +9,7 @@ public class HendelDeur : MonoBehaviour
     public GameObject Deur;
     public Camera mainCamera;
     public Button interactButton; // Voeg hier de public Button toe
+    private bool hasInteracted = false; // Controle of er al is geïnteracteerd
 
     void Update()
     {
@@ -17,7 +18,7 @@ public class HendelDeur : MonoBehaviour
         RaycastHit hit;
 
         // Controleren of de speler op de "E" toets drukt
-        if (Input.GetKeyDown(KeyCode.E))
+        if (Input.GetKeyDown(KeyCode.E) && !hasInteracted)
         {
             // Controleren of de raycast een object raakt
             if (Physics.Raycast(ray, out hit))
@@ -29,6 +30,8 @@ public class HendelDeur : MonoBehaviour
                     if (Deur != null)
                     {
                         Destroy(Deur);
+                        hasInteracted = true; // Markeer dat er is geïnteracteerd
+                        interactButton.gameObject.SetActive(false); // Verberg de interactieknop
                     }
                 }
             }
@@ -40,9 +43,22 @@ public class HendelDeur : MonoBehaviour
             // Controleren of het geraakte object hetzelfde is als de hendel of de deur
             if (hit.collider.gameObject == Hendel)
             {
-                // De speler kijkt naar de hendel of de deur, activeer de interactieknop
-                interactButton.gameObject.SetActive(true);
+                // De speler kijkt naar de hendel of de deur, activeer de interactieknop als er nog niet is geïnteracteerd
+                if (!hasInteracted)
+                {
+                    interactButton.gameObject.SetActive(true);
+                }
             }
+            else
+            {
+                // De speler kijkt niet naar de hendel of de deur, deactiveer de interactieknop
+                interactButton.gameObject.SetActive(false);
+            }
+        }
+        else
+        {
+            // De raycast raakt geen object, deactiveer de interactieknop
+            interactButton.gameObject.SetActive(false);
         }
     }
 }

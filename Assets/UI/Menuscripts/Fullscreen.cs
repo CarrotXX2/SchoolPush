@@ -3,19 +3,22 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class FullScreen : MonoBehaviour
+public class Fullscreen : MonoBehaviour
 {
-    void Start()
+    // Methode om tussen volledig scherm en venstermodus te schakelen wanneer op de knop wordt geklikt
+    public void ToggleFullScreen()
     {
-        // Zoek de knopcomponent in het gameobject waar dit script aan is gekoppeld
-        Button fullScreenButton = GetComponent<Button>();
-        // Voeg een luisteraar toe aan de knop om te reageren op klikken
-        fullScreenButton.onClick.AddListener(ToggleFullScreen);
-    }
-
-    void ToggleFullScreen()
-    {
-        // Wissel tussen volledig scherm en venstermodus
-        Screen.fullScreen = !Screen.fullScreen;
+        // Controleer of de huidige schermmodus volledig scherm is
+        if (Screen.fullScreen)
+        {
+            // Schakel over naar venstermodus als we momenteel in volledig scherm zijn
+            Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, false);
+            print("hoi");
+        }
+        else
+        {
+            // Schakel over naar volledig scherm als we momenteel in venstermodus zijn
+            Screen.SetResolution(Screen.currentResolution.width, Screen.currentResolution.height, true);
+        }
     }
 }

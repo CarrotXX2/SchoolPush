@@ -22,6 +22,7 @@ public class Movement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        Cursor.lockState = CursorLockMode.Locked;
         vert = Input.GetAxis("Vertical");
         hor = Input.GetAxis("Horizontal");
 

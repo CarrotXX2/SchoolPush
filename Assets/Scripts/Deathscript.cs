@@ -8,9 +8,11 @@ public class DeathScript : MonoBehaviour
     public Scene Startscreen;
 
     void OnCollisionEnter(Collision collision)
+
     {
         if (collision.gameObject.CompareTag("dood")) // Controleer of de speler botst met een vijand
         {
+            Cursor.lockState = CursorLockMode.None;
             SceneManager.LoadScene(2);
         }
     }
