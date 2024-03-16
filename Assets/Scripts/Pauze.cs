@@ -5,6 +5,7 @@ using UnityEngine;
 public class PauseMenu : MonoBehaviour
 {
     public GameObject pauseMenuUI;
+    public GameObject gameButton; // Referentie naar de gamebutton
     public bool isPaused = false;
     private CursorLockMode previousLockMode;
 
@@ -14,10 +15,6 @@ public class PauseMenu : MonoBehaviour
         if (pauseMenuUI != null)
         {
             pauseMenuUI.SetActive(false);
-        }
-        else
-        {
-            Debug.LogWarning("Pauzemenu UI niet toegewezen in de Inspector!");
         }
     }
 
@@ -45,14 +42,10 @@ public class PauseMenu : MonoBehaviour
         if (pauseMenuUI != null)
         {
             pauseMenuUI.SetActive(true);
-            Time.timeScale = 0f; // Pauzeer de tijd in het spel
+            Time.timeScale = 0.001f; // Pauzeer de tijd in het spel
             isPaused = true;
             previousLockMode = Cursor.lockState;
             Cursor.lockState = CursorLockMode.None; // Ontgrendel de muis
-        }
-        else
-        {
-            Debug.LogWarning("Pauzemenu UI niet toegewezen in de Inspector!");
         }
     }
 
@@ -65,10 +58,6 @@ public class PauseMenu : MonoBehaviour
             Time.timeScale = 1f; // Hervat de tijd in het spel
             isPaused = false;
             Cursor.lockState = previousLockMode; // Vergrendel de muis weer in de vorige modus
-        }
-        else
-        {
-            Debug.LogWarning("Pauzemenu UI niet toegewezen in de Inspector!");
         }
     }
 
@@ -86,10 +75,9 @@ public class PauseMenu : MonoBehaviour
         Debug.Log("Hoofdmenu wordt geladen...");
     }
 
-    // Methode om het geluid uit te schakelen
-    public void MuteSound()
+    // Voer de Resume methode uit wanneer de gamebutton wordt gebruikt
+    public void OnGameButtonClicked()
     {
-        // Hier kun je code toevoegen om het geluid uit te schakelen
-        Debug.Log("Geluid wordt uitgeschakeld...");
+        Resume();
     }
 }
