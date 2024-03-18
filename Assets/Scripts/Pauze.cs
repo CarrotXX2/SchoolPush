@@ -42,7 +42,7 @@ public class PauseMenu : MonoBehaviour
         if (pauseMenuUI != null)
         {
             pauseMenuUI.SetActive(true);
-            Time.timeScale = 0.001f; // Pauzeer de tijd in het spel
+            Time.timeScale = 0f; // Pauzeer de tijd in het spel
             isPaused = true;
             previousLockMode = Cursor.lockState;
             Cursor.lockState = CursorLockMode.None; // Ontgrendel de muis

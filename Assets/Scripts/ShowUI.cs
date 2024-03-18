@@ -7,7 +7,6 @@ public class ShowUI : MonoBehaviour
 {
     public Camera mainCamera;
     public Button button;
-    public float raycastDistance = 1f;
     public Dialogue dialogue;
     public Dialogue dialogue2;
     public Dialogue dialogue3;
@@ -35,7 +34,7 @@ public class ShowUI : MonoBehaviour
         Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
         RaycastHit hit;
 
-        if (Physics.Raycast(ray, out hit, raycastDistance))
+        if (Physics.Raycast(ray, out hit, 1.5f))
         {
             if (hit.collider.CompareTag("Radio1") && !radio1Interacted)
             {
