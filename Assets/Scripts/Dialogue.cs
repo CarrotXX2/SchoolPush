@@ -8,10 +8,9 @@ public class Dialogue : MonoBehaviour
     public TextMeshProUGUI textcomponent;
     public string[] lines;
     public float textspeed;
-
-    private int index;
-    private bool isTyping; // A flag to indicate whether the text is currently being typed
-    private bool dialogueActive; // A flag to indicate whether the dialogue is active
+    public int index;
+    public bool isTyping; // A flag to indicate whether the text is currently being typed
+    public bool dialogueActive; // A flag to indicate whether the dialogue is active
 
     // Start is called before the first frame update
     void Start()
@@ -24,7 +23,7 @@ public class Dialogue : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (textcomponent.text == lines[index] && !isTyping) // Check if not currently typing
+            if (textcomponent.text == lines[index] && !isTyping) // als je klikt wanneer 
             {
                 Nextline();
             }

@@ -15,6 +15,7 @@ TagManager:
   - PlankSpawner
   - dood
   - Radio3
+  - Deur
   layers:
   - Default
   - TransparentFX
