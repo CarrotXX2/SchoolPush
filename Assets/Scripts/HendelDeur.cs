@@ -6,44 +6,43 @@ using UnityEngine.UI;
 public class HendelDeur : MonoBehaviour
 {
     public GameObject Hendel;
-    public GameObject Deur;
-    public Camera mainCamera;
-    public Button interactButton; // Voeg hier de public Button toe
-    private bool hasInteracted = false; // Controle of er al is geïnteracteerd
+    public GameObject DeurPrefab;
+    public Button interactButton;
+    public bool hasInteracted = false;
+
+    public GameObject spawnPoint;
+    public GameObject currentDoor;
 
     void Update()
     {
-        // Raycast vanuit het midden van het scherm
-        Ray ray = mainCamera.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+        Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
         RaycastHit hit;
 
-        // Controleren of de speler op de "E" toets drukt
         if (Input.GetKeyDown(KeyCode.E) && !hasInteracted)
         {
-            // Controleren of de raycast een object raakt
             if (Physics.Raycast(ray, out hit))
             {
-                // Controleren of het geraakte object hetzelfde is als de hendel
                 if (hit.collider.gameObject == Hendel)
                 {
-                    // Verwijder de deur als het geraakte object hetzelfde is als de hendel
-                    if (Deur != null)
+                    if (currentDoor != null)
                     {
-                        Destroy(Deur);
-                        hasInteracted = true; // Markeer dat er is geïnteracteerd
-                        interactButton.gameObject.SetActive(false); // Verberg de interactieknop
+                        Destroy(currentDoor);
+                    }
+
+                    if (DeurPrefab != null && spawnPoint != null)
+                    {
+                        currentDoor = Instantiate(DeurPrefab, spawnPoint.transform.position, Quaternion.identity);
+                        hasInteracted = true;
+                        interactButton.gameObject.SetActive(false);
                     }
                 }
             }
         }
 
-        // Controleren of de raycast een object raakt
         if (Physics.Raycast(ray, out hit))
         {
-            // Controleren of het geraakte object hetzelfde is als de hendel of de deur
             if (hit.collider.gameObject == Hendel)
             {
-                // De speler kijkt naar de hendel of de deur, activeer de interactieknop als er nog niet is geïnteracteerd
                 if (!hasInteracted)
                 {
                     interactButton.gameObject.SetActive(true);
@@ -51,14 +50,17 @@ public class HendelDeur : MonoBehaviour
             }
             else
             {
-                // De speler kijkt niet naar de hendel of de deur, deactiveer de interactieknop
                 interactButton.gameObject.SetActive(false);
             }
         }
         else
         {
-            // De raycast raakt geen object, deactiveer de interactieknop
             interactButton.gameObject.SetActive(false);
         }
+    }
+
+    public void SetSpawnPoint(GameObject point)
+    {
+        spawnPoint = point;
     }
 }
