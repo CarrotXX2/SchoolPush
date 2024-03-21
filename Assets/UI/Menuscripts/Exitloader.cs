@@ -10,6 +10,5 @@ public class SceneLoader : MonoBehaviour
     public void LoadScene()
     {
         SceneManager.LoadScene(sceneName);
-        Debug.Log("Scene loaded: " + sceneName); // Optioneel: voeg een debugbericht toe om te controleren of de knop correct werkt
     }
 }
