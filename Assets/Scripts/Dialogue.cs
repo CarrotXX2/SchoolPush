@@ -6,11 +6,11 @@ using TMPro;
 public class Dialogue : MonoBehaviour
 {
     public TextMeshProUGUI textcomponent;
-    public string[] lines;
+    public string[] dialoogregels;
     public float textspeed;
     public int index;
-    public bool isTyping; // A flag to indicate whether the text is currently being typed
-    public bool dialogueActive; // A flag to indicate whether the dialogue is active
+    public bool isTyping;
+    public bool dialogueActive;
 
     // Start is called before the first frame update
     void Start()
@@ -23,26 +23,16 @@ public class Dialogue : MonoBehaviour
     {
         if (Input.GetMouseButtonDown(0))
         {
-            if (textcomponent.text == lines[index] && !isTyping) // als je klikt wanneer 
+            if (textcomponent.text == dialoogregels[index] && !isTyping)
             {
                 Nextline();
             }
-            else if (!isTyping) // Check if not currently typing
-            {
-                StopAllCoroutines();
-                textcomponent.text = lines[index];
-            }
-        }
-
-        if (Input.GetKeyDown(KeyCode.E) && !dialogueActive) // Check if dialogue is not already active
-        {
-            StartDialogue();
         }
     }
 
     public void StartDialogue()
     {
-        dialogueActive = true; // Set dialogue as active
+        dialogueActive = true; 
         gameObject.SetActive(true);
         index = 0;
         StartCoroutine(TypeLine());
@@ -50,18 +40,18 @@ public class Dialogue : MonoBehaviour
 
     IEnumerator TypeLine()
     {
-        isTyping = true; // Set typing flag
-        foreach (char c in lines[index].ToCharArray())
+        isTyping = true;
+        foreach (char c in dialoogregels[index].ToCharArray())
         {
             textcomponent.text += c;
             yield return new WaitForSeconds(textspeed);
         }
-        isTyping = false; // Reset typing flag
+        isTyping = false;
     }
 
     void Nextline()
     {
-        if (index < lines.Length - 1)
+        if (index < dialoogregels.Length - 1)
         {
             index++;
             textcomponent.text = string.Empty;
@@ -69,7 +59,7 @@ public class Dialogue : MonoBehaviour
         }
         else
         {
-            dialogueActive = false; // Reset dialogue as not active
+            dialogueActive = false;
             gameObject.SetActive(false);
         }
     }

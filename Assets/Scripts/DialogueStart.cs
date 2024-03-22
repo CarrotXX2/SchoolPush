@@ -1,33 +1,30 @@
 using System.Collections;
 using UnityEngine;
 
-public class ShowUI : MonoBehaviour
+public class DialogueStart : MonoBehaviour
 {
     public Camera mainCamera;
     public Dialogue dialogue;
     public Dialogue dialogue2;
     public Dialogue dialogue3;
-    private bool radio1Interacted = false;
-    private bool radio2Interacted = false;
-    private bool radio3Interacted = false;
+    public bool radio1Interacted = false;
+    public bool radio2Interacted = false;
+    public bool radio3Interacted = false;
+    public RaycastHit hit;
+
 
     void Update()
     {
-        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);
-        RaycastHit hit;
+        Ray ray = mainCamera.ScreenPointToRay(Input.mousePosition);        
 
-        if (Physics.Raycast(ray, out hit, 1.5f)) 
+        if (Physics.Raycast(ray, out hit, 1.5f))
         {
             if (hit.collider.CompareTag("Radio1") && !radio1Interacted)
             {
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     radio1Interacted = true;
-                    if (dialogue != null)
-                    {
-                        dialogue.StartDialogue();
-                    }
-                    hit.collider.enabled = false; 
+                    dialogue.StartDialogue(); //Start de component (script)
                 }
             }
             else if (hit.collider.CompareTag("Radio2") && !radio2Interacted)
@@ -35,11 +32,7 @@ public class ShowUI : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     radio2Interacted = true;
-                    if (dialogue2 != null)
-                    {
-                        dialogue2.StartDialogue();
-                    }
-                    hit.collider.enabled = false; // Schakel de collider van Radio2 uit
+                    dialogue2.StartDialogue();
                 }
             }
             else if (hit.collider.CompareTag("Radio3") && !radio3Interacted)
@@ -47,11 +40,7 @@ public class ShowUI : MonoBehaviour
                 if (Input.GetKeyDown(KeyCode.E))
                 {
                     radio3Interacted = true;
-                    if (dialogue3 != null)
-                    {
-                        dialogue3.StartDialogue();
-                    }
-                    hit.collider.enabled = false; // Schakel de collider van Radio3 uit
+                    dialogue3.StartDialogue();
                 }
             }
         }

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.12731749, g: 0.13414757, b: 0.1210787, a: 1}
+  m_IndirectSpecularColor: {r: 0.12731715, g: 0.13414735, b: 0.121078536, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -249,11 +249,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textcomponent: {fileID: 1230143303}
-  lines:
-  - Ha, mooi zo die sleutel gevonde? Ja ander probleempje
-  - Ze hebbe de school afgesloten dus ja je moet effe de hendel vinden die de trallies
-    omhoog doet
-  - wel beetje raar dat ze op deze school trallies hebbe of nie?
+  dialoogregels:
+  - Na mooi zo nu ben je die kamer uit maar uhhh, ik weet niet of je het hebt gezien
+    maar uhhh
+  - er is een beetje en hek voor je... ja veel success daarmee ik weet wel dat hier
+    ergens een hendel er voor hoort tezijn maar weet niet zeker waar dus zoeke dan
+    maar!
   textspeed: 0.025
   index: 0
   isTyping: 0
@@ -1075,10 +1076,10 @@ GameObject:
   - component: {fileID: 145614602}
   - component: {fileID: 145614601}
   - component: {fileID: 145614604}
-  - component: {fileID: 145614605}
   - component: {fileID: 145614606}
   - component: {fileID: 145614607}
   - component: {fileID: 145614608}
+  - component: {fileID: 145614609}
   m_Layer: 0
   m_Name: Camera
   m_TagString: MainCamera
@@ -1221,22 +1222,6 @@ MonoBehaviour:
   headRot: {x: 0, y: 0, z: 0}
   rotSpeed: 150
   maxRotationX: 80
---- !u!114 &145614605
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 145614598}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 445c00130a12bbb40b5fc9efcf18814f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mainCamera: {fileID: 145614603}
-  dialogue: {fileID: 233371939}
-  dialogue2: {fileID: 31218640}
-  dialogue3: {fileID: 1864894850}
 --- !u!114 &145614606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1283,6 +1268,25 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8eaf8db3a2e77e34d8713dedfbdac954, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!114 &145614609
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 145614598}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 445c00130a12bbb40b5fc9efcf18814f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mainCamera: {fileID: 145614603}
+  dialogue: {fileID: 233371939}
+  dialogue2: {fileID: 31218640}
+  dialogue3: {fileID: 1864894850}
+  radio1Interacted: 0
+  radio2Interacted: 0
+  radio3Interacted: 0
 --- !u!1001 &151393983
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1299,7 +1303,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 7228014fb9ba86a4fa9cae6e4945796c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -15.047829
+      value: -7.953
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7228014fb9ba86a4fa9cae6e4945796c,
         type: 3}
@@ -1309,12 +1313,12 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 7228014fb9ba86a4fa9cae6e4945796c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -10.28456
+      value: -12.187
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7228014fb9ba86a4fa9cae6e4945796c,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.43515748
+      value: 0.8723159
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7228014fb9ba86a4fa9cae6e4945796c,
         type: 3}
@@ -1324,7 +1328,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 7228014fb9ba86a4fa9cae6e4945796c,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.9003543
+      value: 0.48894286
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7228014fb9ba86a4fa9cae6e4945796c,
         type: 3}
@@ -1339,7 +1343,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 7228014fb9ba86a4fa9cae6e4945796c,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 128.409
+      value: 58.542
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7228014fb9ba86a4fa9cae6e4945796c,
         type: 3}
@@ -1714,14 +1718,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 208585282}
-  m_LocalRotation: {x: -0, y: -0.52371603, z: -0, w: 0.85189295}
-  m_LocalPosition: {x: -15.333, y: 0.448, z: -10.75}
+  m_LocalRotation: {x: -0, y: -0.91716725, z: -0, w: 0.39850262}
+  m_LocalPosition: {x: -7.614153, y: 0.448, z: -12.614957}
   m_LocalScale: {x: 1.6408626, y: 1.0150397, z: 0.7922382}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 15
-  m_LocalEulerAnglesHint: {x: 0, y: -63.164, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: -133.031, z: 0}
 --- !u!1 &233371935
 GameObject:
   m_ObjectHideFlags: 0
@@ -1813,10 +1817,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textcomponent: {fileID: 1641136507}
-  lines:
-  - Hey hallo pipo, wat doe jij nog op school?
-  - Zoek de sleutel en dan wegwezen!
-  - De sleutel is hier ergens te vinden dus veel success he pipo!
+  dialoogregels:
+  - Hey pipo wat doe jij hier nou?
+  - De school is echt HEEL lang al dicht.
+  - Na, de deur hiero is opslot maar er is wel een sleutel in deze kamer ga hem maar
+    zoeke.
   textspeed: 0.025
   index: 0
   isTyping: 0
@@ -2550,14 +2555,14 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 682528705}
-  m_LocalRotation: {x: -0, y: 0.7138369, z: -0, w: 0.70031196}
-  m_LocalPosition: {x: -17.395, y: 0.448, z: -10.182}
+  m_LocalRotation: {x: -0, y: 0.42939723, z: -0, w: 0.9031158}
+  m_LocalPosition: {x: -21.536, y: 0.448, z: -6.273}
   m_LocalScale: {x: 1.6408626, y: 1.0150397, z: 0.7922382}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 32
-  m_LocalEulerAnglesHint: {x: 0, y: 91.096, z: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 50.859, z: 0}
 --- !u!1 &698264281
 GameObject:
   m_ObjectHideFlags: 0
@@ -5632,7 +5637,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 7228014fb9ba86a4fa9cae6e4945796c,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: -17.164707
+      value: -21.679335
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7228014fb9ba86a4fa9cae6e4945796c,
         type: 3}
@@ -5642,12 +5647,12 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 7228014fb9ba86a4fa9cae6e4945796c,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -9.687949
+      value: -5.747094
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7228014fb9ba86a4fa9cae6e4945796c,
         type: 3}
       propertyPath: m_LocalRotation.w
-      value: 0.06976326
+      value: 0.40863374
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7228014fb9ba86a4fa9cae6e4945796c,
         type: 3}
@@ -5657,7 +5662,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 7228014fb9ba86a4fa9cae6e4945796c,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0.9975636
+      value: 0.9126985
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7228014fb9ba86a4fa9cae6e4945796c,
         type: 3}
@@ -5672,7 +5677,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 7228014fb9ba86a4fa9cae6e4945796c,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 171.999
+      value: 131.762
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7228014fb9ba86a4fa9cae6e4945796c,
         type: 3}
@@ -6652,10 +6657,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textcomponent: {fileID: 2105742051}
-  lines:
-  - Bro wat de fak, waar is de vloer?
-  - uhhh ja veel success hiermee volgensmij zijn er nog wat planken in de berging
-    mischien kan je daarmee wat doen
+  dialoogregels:
+  - 'bro wat de fak waar is de vloer... na dan maar uhhh ja weet ik niet echt. '
+  - Mischien kan je wat planken zoeken en dan een pad maken om verder te gaan? ja
+    doe dat maar
+  - volgensmij liggen er nog wat planken in de berging.
   textspeed: 0.025
   index: 0
   isTyping: 0
@@ -6842,7 +6848,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1905909769}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -20.28, y: 1.23, z: 3.386}
+  m_LocalPosition: {x: -20.62, y: 1.23, z: -1.61}
   m_LocalScale: {x: 0.8910261, y: 0.944347, z: 0.89102614}
   m_ConstrainProportionsScale: 0
   m_Children: []
