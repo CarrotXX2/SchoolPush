@@ -46,7 +46,8 @@ public class PlankPickup : MonoBehaviour
                     for (int i = 0; i < 10; i++)
                     {
                         Vector3 spawnPosition = spawnPoint.transform.position + new Vector3(i * plankOffset, 0, 0);
-                        Instantiate(plankPrefab, spawnPosition, Quaternion.identity);
+                        Quaternion spawnRotation = Quaternion.Euler(0, 90, -90); // Rotatie instellen
+                        Instantiate(plankPrefab, spawnPosition, spawnRotation);
                     }
                 }
             }
