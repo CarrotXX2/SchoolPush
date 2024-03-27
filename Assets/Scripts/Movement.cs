@@ -9,9 +9,9 @@ public class Movement : MonoBehaviour
     public Vector3 movedir;
     public float speed;
     public float sprintSpeedMultiplier = 2f;
-    public float crouchSpeedMultiplier = 0.5f; // Added crouch speed multiplier
+    public float crouchSpeedMultiplier = 0.5f; 
     private bool isSprinting = false;
-    private bool isCrouching = false; // Added crouching flag
+    private bool isCrouching = false; 
 
     // Start is called before the first frame update
     void Start()
