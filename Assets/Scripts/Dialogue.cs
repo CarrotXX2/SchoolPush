@@ -5,61 +5,50 @@ using TMPro;
 
 public class Dialogue : MonoBehaviour
 {
-    public TextMeshProUGUI textcomponent;
-    public string[] dialoogregels;
-    public float textspeed;
-    public int index;
-    public bool isTyping;
-    public bool dialogueActive;
+    public TextMeshProUGUI textBox;
+    public string[] dialogueLines;
+    public float textSpeed;
+    private int regel;
+    private bool isTyping;
 
-    // Start is called before the first frame update
     void Start()
     {
         gameObject.SetActive(false);
     }
-
-    // Update is called once per frame
-    void Update()
-    {
-        if (Input.GetMouseButtonDown(0))
-        {
-            if (textcomponent.text == dialoogregels[index] && !isTyping)
-            {
-                Nextline();
-            }
-        }
-    }
-
     public void StartDialogue()
     {
-        dialogueActive = true; 
         gameObject.SetActive(true);
-        index = 0;
+        regel = 0;
         StartCoroutine(TypeLine());
     }
 
     IEnumerator TypeLine()
     {
         isTyping = true;
-        foreach (char c in dialoogregels[index].ToCharArray())
+        foreach (char character in dialogueLines[regel].ToCharArray())
         {
-            textcomponent.text += c;
-            yield return new WaitForSeconds(textspeed);
+            textBox.text += character;
+            yield return new WaitForSeconds(textSpeed);
         }
         isTyping = false;
     }
-
-    void Nextline()
+    void Update()
     {
-        if (index < dialoogregels.Length - 1)
+        if (Input.GetMouseButtonDown(0) && !isTyping)
         {
-            index++;
-            textcomponent.text = string.Empty;
+            NextLine();
+        }
+    }
+    void NextLine()
+    {
+        if (regel < dialogueLines.Length - 1)
+        {
+            regel++;
+            textBox.text = string.Empty;
             StartCoroutine(TypeLine());
         }
         else
         {
-            dialogueActive = false;
             gameObject.SetActive(false);
         }
     }
