@@ -6,9 +6,9 @@ using TMPro;
 public class Dialogue : MonoBehaviour
 {
     public TextMeshProUGUI textBox;
-    public string[] dialogueLines;
+    public string[] dialogueArray;
     public float textSpeed;
-    private int regel;
+    public int regelIndex;
     private bool isTyping;
 
     void Start()
@@ -18,14 +18,14 @@ public class Dialogue : MonoBehaviour
     public void StartDialogue()
     {
         gameObject.SetActive(true);
-        regel = 0;
+        regelIndex = 0;
         StartCoroutine(TypeLine());
     }
 
     IEnumerator TypeLine()
     {
         isTyping = true;
-        foreach (char character in dialogueLines[regel].ToCharArray())
+        foreach (char character in dialogueArray[regelIndex].ToCharArray())
         {
             textBox.text += character;
             yield return new WaitForSeconds(textSpeed);
@@ -41,9 +41,9 @@ public class Dialogue : MonoBehaviour
     }
     void NextLine()
     {
-        if (regel < dialogueLines.Length - 1)
+        if (regelIndex < dialogueArray.Length - 1)
         {
-            regel++;
+            regelIndex++;
             textBox.text = string.Empty;
             StartCoroutine(TypeLine());
         }
