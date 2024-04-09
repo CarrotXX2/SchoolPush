@@ -9,9 +9,22 @@ public class HendelDeur : MonoBehaviour
     public GameObject DeurPrefab;
     public Button interactButton;
     public bool hasInteracted = false;
+    public AudioClip interactSound; // Geluidseffect dat moet worden afgespeeld
+    private AudioSource audioSource; // AudioSource-component van Hendel
 
     public GameObject spawnPoint;
     public GameObject currentDoor;
+
+    void Start()
+    {
+        // Zoek AudioSource-component op de Hendel
+        audioSource = Hendel.GetComponent<AudioSource>();
+        if (audioSource == null)
+        {
+            // Voeg AudioSource-component toe als het niet aanwezig is
+            audioSource = Hendel.AddComponent<AudioSource>();
+        }
+    }
 
     void Update()
     {
@@ -34,6 +47,12 @@ public class HendelDeur : MonoBehaviour
                         currentDoor = Instantiate(DeurPrefab, spawnPoint.transform.position, Quaternion.identity);
                         hasInteracted = true;
                         interactButton.gameObject.SetActive(false);
+
+                        // Speel het geluidseffect af
+                        if (interactSound != null && audioSource != null)
+                        {
+                            audioSource.PlayOneShot(interactSound);
+                        }
                     }
                 }
             }
@@ -63,5 +82,4 @@ public class HendelDeur : MonoBehaviour
     {
         spawnPoint = point;
     }
-  
 }

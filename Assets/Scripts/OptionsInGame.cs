@@ -8,17 +8,11 @@ public class ShowOptionsPanel : MonoBehaviour
 
     void Update()
     {
-        // Controleer of de Escape-toets wordt ingedrukt
         if (Input.GetKeyDown(KeyCode.Escape))
         {
-            // Als het OptionsPanel bestaat, activeer het
             if (optionsPanel != null)
             {
-                optionsPanel.SetActive(!optionsPanel.activeSelf); // Wissel de actieve staat van het OptionsPanel
-            }
-            else
-            {
-                Debug.LogWarning("OptionsPanel is niet toegewezen in de Inspector!");
+                optionsPanel.SetActive(!optionsPanel.activeSelf); 
             }
         }
     }
