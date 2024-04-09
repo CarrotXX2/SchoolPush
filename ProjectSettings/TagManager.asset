@@ -17,6 +17,7 @@ TagManager:
   - Radio3
   - Deur
   - Einde
+  - HendelF
   layers:
   - Default
   - TransparentFX
