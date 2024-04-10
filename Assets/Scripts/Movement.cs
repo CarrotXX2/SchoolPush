@@ -8,7 +8,7 @@ public class Movement : MonoBehaviour
     public float hor;
     public Vector3 movedir;
     public float speed;
-    public float sprintSpeedMultiplier = 2f;
+    public float sprintSpeedMultiplier = 1.25f;
     public float crouchSpeedMultiplier = 0.5f; 
     private bool isSprinting = false;
     private bool isCrouching = false; 
@@ -17,6 +17,7 @@ public class Movement : MonoBehaviour
     void Start()
     {
         Cursor.lockState = CursorLockMode.Locked;
+        Time.timeScale = 1f;
     }
 
     // Update is called once per frame
