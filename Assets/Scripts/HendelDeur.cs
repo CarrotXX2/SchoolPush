@@ -11,10 +11,10 @@ public class HendelDeur : MonoBehaviour
     public bool hasInteracted = false;
     public AudioClip interactSound; // Geluidseffect dat moet worden afgespeeld
     private AudioSource audioSource; // AudioSource-component van Hendel
-    private Animator animator; // Animator component voor het afspelen van de animatie
 
     public GameObject spawnPoint;
     public GameObject currentDoor;
+
 
     void Start()
     {
@@ -24,14 +24,6 @@ public class HendelDeur : MonoBehaviour
         {
             // Voeg AudioSource-component toe als het niet aanwezig is
             audioSource = Hendel.AddComponent<AudioSource>();
-        }
-
-        // Zoek de Animator-component op de Hendel
-        animator = Hendel.GetComponent<Animator>();
-        if (animator == null)
-        {
-            // Voeg Animator-component toe als het niet aanwezig is
-            animator = Hendel.AddComponent<Animator>();
         }
     }
 
@@ -46,12 +38,10 @@ public class HendelDeur : MonoBehaviour
             {
                 if (hit.collider.gameObject == Hendel)
                 {
-                    // Speel de "PullLever" animatie af
-                    animator.Play("PullLever");
-
                     if (currentDoor != null)
                     {
                         Destroy(currentDoor);
+
                     }
 
                     if (DeurPrefab != null && spawnPoint != null)

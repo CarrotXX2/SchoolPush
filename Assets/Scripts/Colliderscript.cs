@@ -1,26 +1,32 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class StopOnCollision : MonoBehaviour
+public class StopOnRaycast : MonoBehaviour
 {
-    public float stopDistance = 0.1f;
-    private Rigidbody rb;
+    public float stopDistance = 0.1f; // Distance at which movement stops
+    private Rigidbody rb; // Reference to the Rigidbody component
 
     void Start()
     {
-        rb = GetComponent<Rigidbody>();
+        rb = GetComponent<Rigidbody>(); // Get the Rigidbody component attached to this GameObject
     }
 
-    void OnTriggerEnter(Collider other)
+    void Update()
     {
-        // Calculate distance between this object and the collider
-        float distance = Vector3.Distance(transform.position, other.transform.position);
+        // Create a ray from the center of the screen
+        Ray ray = Camera.main.ScreenPointToRay(new Vector3(Screen.width / 2, Screen.height / 2, 0));
+        RaycastHit hit; // Variable to store information about the raycast hit
 
-        // If the collider is within the stop distance, stop movement
-        if (distance <= stopDistance)
+        // Check if the raycast hits any collider
+        if (Physics.Raycast(ray, out hit))
         {
-            rb.velocity = Vector3.zero;
+            // Calculate the distance between this object and the hit point
+            float distance = Vector3.Distance(transform.position, hit.point);
+
+            // If the distance is less than or equal to the stop distance, stop movement
+            if (distance <= stopDistance)
+            {
+                rb.velocity = Vector3.zero; // Stop movement by setting velocity to zero
+            }
         }
     }
 }

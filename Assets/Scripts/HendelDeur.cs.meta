@@ -3,7 +3,13 @@ guid: 8cbc3549f9fd4f344bec0fec9bff2419
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - Hendel: {fileID: 919132149155446097, guid: c026ffb1af7c8454f941de26356d7bef, type: 3}
+  - DeurPrefab: {instanceID: 0}
+  - interactButton: {instanceID: 0}
+  - interactSound: {instanceID: 0}
+  - spawnPoint: {instanceID: 0}
+  - currentDoor: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 
